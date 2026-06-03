@@ -11,6 +11,7 @@ def create_app() -> FastAPI:
         title=settings.api.title,
         debug=settings.api.debug,
     )
+    register_exception_handlers(app)
     return app
 
 
