@@ -16,3 +16,7 @@ class InvalidSectionError(DomainError):
 
 class InvalidLectureError(DomainError):
     pass
+
+
+class InvalidUserError(DomainError):
+    pass
