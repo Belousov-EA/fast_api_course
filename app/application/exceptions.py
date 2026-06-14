@@ -16,3 +16,11 @@ class SectionNotFoundError(ApplicationError):
 
 class LectureNotFoundError(ApplicationError):
     pass
+
+
+class UserAlreadyExistsError(ApplicationError):
+    pass
+
+
+class InvalidCredentialsError(ApplicationError):
+    pass

@@ -38,6 +38,8 @@ router = APIRouter(tags=["Content"])
 @router.get(
     "/courses",
     response_model=list[CourseListItemResponse],
+    summary="List available courses",
+    description="Returns a public list of courses available in the system.",
 )
 async def get_courses(
     use_case: GetCoursesUseCase = Depends(get_get_courses_use_case),
@@ -49,6 +51,14 @@ async def get_courses(
 @router.get(
     "/courses/{course_id}",
     response_model=CourseResponse,
+    summary="Get course by ID",
+    description="Returns a single course by its identifier.",
+    responses={
+        404: {
+            "description": "Course was not found.",
+            "model": ErrorResponse,
+        },
+    },
 )
 async def get_course(
     course_id: UUID,
@@ -61,6 +71,17 @@ async def get_course(
 @router.get(
     "/courses/{course_id}/structure",
     response_model=CourseStructureResponse,
+    summary="Get course structure",
+    description=(
+        "Returns the course navigation tree: modules, sections and lectures "
+        "without full lecture content."
+    ),
+    responses={
+        404: {
+            "description": "Course was not found.",
+            "model": ErrorResponse,
+        },
+    },
 )
 async def get_course_structure(
     course_id: UUID,
@@ -73,6 +94,14 @@ async def get_course_structure(
 @router.get(
     "/lectures/{lecture_id}",
     response_model=LectureResponse,
+    summary="Get lecture by ID",
+    description="Returns the full content of a single lecture.",
+    responses={
+        404: {
+            "description": "Lecture was not found.",
+            "model": ErrorResponse,
+        },
+    },
 )
 async def get_lecture(
     lecture_id: UUID,
