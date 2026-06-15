@@ -31,6 +31,7 @@ from app.presentation.api.schemas.auth import (
     TokenResponse,
     LoginRequest,
     RegisteredUserResponse,
+    CurrentUserResponse,
 )
 
 __all__ = [
@@ -56,4 +57,5 @@ __all__ = [
     "LoginRequest",
     "RegisteredUserResponse",
     "RegisterUserRequest",
+    "CurrentUserResponse",
 ]
