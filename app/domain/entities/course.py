@@ -27,3 +27,7 @@ class Course:
 
     def add_module(self, module_id: UUID) -> None:
         self.module_ids.append(module_id)
+
+    def remove_module(self, module_id: UUID) -> None:
+        if module_id in self.module_ids:
+            self.module_ids.remove(module_id)

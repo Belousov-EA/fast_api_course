@@ -13,12 +13,16 @@ from app.infrastructure.database import SessionFactory, SqlAlchemyUnitOfWork
 
 from app.application.use_cases.courses.create_course import CreateCourseUseCase
 from app.application.use_cases.courses.update_course import UpdateCourseUseCase
+from app.application.use_cases.courses.delete_course import DeleteCourseUseCase
 from app.application.use_cases.lectures.create_lecture import CreateLectureUseCase
 from app.application.use_cases.lectures.update_lecture import UpdateLectureUseCase
+from app.application.use_cases.lectures.delete_lecture import DeleteLectureUseCase
 from app.application.use_cases.modules.create_module import CreateModuleUseCase
 from app.application.use_cases.modules.update_module import UpdateModuleUseCase
+from app.application.use_cases.modules.delete_module import DeleteModuleUseCase
 from app.application.use_cases.sections.create_section import CreateSectionUseCase
 from app.application.use_cases.sections.update_section import UpdateSectionUseCase
+from app.application.use_cases.sections.delete_section import DeleteSectionUseCase
 
 from app.application.interfaces.services.password_hasher import PasswordHasher
 from app.infrastructure.security.password_hasher import PwdlibPasswordHasher
@@ -80,12 +84,20 @@ def get_update_course_use_case() -> UpdateCourseUseCase:
     return UpdateCourseUseCase(uow=SqlAlchemyUnitOfWork(session_factory=SessionFactory))
 
 
+def get_delete_course_use_case() -> DeleteCourseUseCase:
+    return DeleteCourseUseCase(uow=SqlAlchemyUnitOfWork(session_factory=SessionFactory))
+
+
 def get_create_module_use_case() -> CreateModuleUseCase:
     return CreateModuleUseCase(uow=SqlAlchemyUnitOfWork(session_factory=SessionFactory))
 
 
 def get_update_module_use_case() -> UpdateModuleUseCase:
     return UpdateModuleUseCase(uow=SqlAlchemyUnitOfWork(session_factory=SessionFactory))
+
+
+def get_delete_module_use_case() -> DeleteModuleUseCase:
+    return DeleteModuleUseCase(uow=SqlAlchemyUnitOfWork(session_factory=SessionFactory))
 
 
 def get_create_section_use_case() -> CreateSectionUseCase:
@@ -100,6 +112,12 @@ def get_update_section_use_case() -> UpdateSectionUseCase:
     )
 
 
+def get_delete_section_use_case() -> DeleteSectionUseCase:
+    return DeleteSectionUseCase(
+        uow=SqlAlchemyUnitOfWork(session_factory=SessionFactory)
+    )
+
+
 def get_create_lecture_use_case() -> CreateLectureUseCase:
     return CreateLectureUseCase(
         uow=SqlAlchemyUnitOfWork(session_factory=SessionFactory)
@@ -108,6 +126,12 @@ def get_create_lecture_use_case() -> CreateLectureUseCase:
 
 def get_update_lecture_use_case() -> UpdateLectureUseCase:
     return UpdateLectureUseCase(
+        uow=SqlAlchemyUnitOfWork(session_factory=SessionFactory)
+    )
+
+
+def get_delete_lecture_use_case() -> DeleteLectureUseCase:
+    return DeleteLectureUseCase(
         uow=SqlAlchemyUnitOfWork(session_factory=SessionFactory)
     )
 

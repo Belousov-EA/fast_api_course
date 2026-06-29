@@ -28,3 +28,6 @@ class Lecture:
         self.content = content
         self.position = position
         self._validate()
+
+    def get_section_id(self) -> UUID:
+        return self.section_id

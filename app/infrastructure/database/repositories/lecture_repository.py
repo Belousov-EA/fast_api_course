@@ -38,3 +38,10 @@ class SqlAlchemyLectureRepository(LectureRepository):
         model.content = lecture.content
         model.position = lecture.position
         await self.session.flush()
+
+    async def remove(self, lecture: Lecture) -> None:
+        model = await self.session.get(LectureModel, str(lecture.id))
+        if model is None:
+            return
+        await self.session.delete(model)
+        await self.session.flush()

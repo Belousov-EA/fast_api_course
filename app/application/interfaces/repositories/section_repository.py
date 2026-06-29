@@ -20,3 +20,7 @@ class SectionRepository(ABC):
     @abstractmethod
     async def update(self, section: Section) -> None:
         raise NotImplementedError
+
+    @abstractmethod
+    async def remove(self, course: Section) -> None:
+        raise NotImplementedError
